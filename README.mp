@@ -16,11 +16,8 @@ Future experiments may also investigate whether chemistry-specific models are ne
 
 ## Dataset
 
-The project uses experimental battery charging data containing three battery chemistries:
+The project uses experimental battery charging data containing LiFePO₄ battery chemistry.
 
-* NMC
-* NCA
-* LiFePO₄
 
 The dataset includes multiple operating conditions:
 
@@ -34,7 +31,6 @@ The dataset includes multiple operating conditions:
   * 5 °C
   * 25 °C
   * 45 °C
-  * additional −5 °C experiments for NCA
 
 Measurements include variables such as:
 
@@ -54,18 +50,16 @@ The dataset source and known data-quality questions are documented in [`data/REA
 .
 ├── data/
 │   ├── raw/
-│   │   ├── NMC/
-│   │   ├── NCA/
 │   │   └── LFP/
 │   └── README.md
 ├── notebooks/
 │   └── 01_data_understanding.ipynb
+│   └── 02_data_cleaning.ipynb
+│   └── 03_data_classification.ipynb
 ├── src/
 │   └── soc_prediction/
-│       └── __init__.py
+│       └── data.py
 ├── README.md
-├── requirements.txt
-└── .gitignore
 ```
 
 The repository separates:
@@ -75,31 +69,9 @@ The repository separates:
 * reusable processing and modeling code in `src/`;
 * project and dataset documentation.
 
-## Current Project Stage
-
-* [x] Dataset collection
-* [ ] Dataset understanding
-* [ ] Data-quality validation
-* [ ] Standardized preprocessing pipeline
-* [ ] Baseline SOC regression model
-* [ ] Cross-condition evaluation
-* [ ] Cross-chemistry evaluation
-* [ ] Sequence-based modeling
 
 ## Modeling Approach
 
 The project will begin with deliberately simple baseline models before considering more complex sequence-based architectures.
 
-Initial models will establish reference performance and help identify:
-
-* whether voltage, current, and temperature contain sufficient information for SOC estimation;
-* how strongly performance depends on operating condition;
-* where distribution shifts occur across temperatures and C-rates.
-
 More complex models will only be introduced after the dataset structure and baseline limitations are understood.
-
-## Status
-
-This repository is currently in the **data-understanding and validation stage**.
-
-Results should therefore be considered preliminary while experimental metadata, SOC/SOE definitions, and cross-condition consistency are still being investigated.
